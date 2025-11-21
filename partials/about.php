@@ -9,18 +9,18 @@ declare(strict_types=1);
             <p class="text-gray-700 leading-relaxed"><?php echo e($About['body']); ?></p>
         </div>
         <aside class="bg-gray-900 text-white rounded-2xl p-6 space-y-3">
-            <h3 class="text-xl font-semibold">Contacto directo</h3>
+            <h3 class="text-xl font-semibold"><?php echo e($UI['contact_card_title']); ?></h3>
             <div class="space-y-2 text-sm">
                 <div>
-                    <span class="block text-gray-300">Teléfono</span>
+                    <span class="block text-gray-300"><?php echo e($UI['contact_phone_label']); ?></span>
                     <a class="font-semibold focus-ring" href="<?php echo e($SiteConfig['phone_href']); ?>"><?php echo e($SiteConfig['phone']); ?></a>
                 </div>
                 <div>
-                    <span class="block text-gray-300">Correo</span>
+                    <span class="block text-gray-300"><?php echo e($UI['contact_email_label']); ?></span>
                     <a class="font-semibold focus-ring" href="mailto:<?php echo e($SiteConfig['email']); ?>"><?php echo e($SiteConfig['email']); ?></a>
                 </div>
                 <div>
-                    <span class="block text-gray-300">Dirección</span>
+                    <span class="block text-gray-300"><?php echo e($UI['contact_address']); ?></span>
                     <p class="font-semibold"><?php echo e($SiteConfig['address']); ?></p>
                 </div>
             </div>
