@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Nombre Cliente",
+    "role": "Tipo de cliente o servicio",
+    "rating": 5,
+    "message": "Mensaje del testimonio",
+    "date": "2025-01-15"
+  }
+]
