@@ -11,7 +11,7 @@ declare(strict_types=1);
             <a class="block text-sm font-semibold text-white focus-ring" href="mailto:<?php echo e($SiteConfig['email']); ?>"><?php echo e($SiteConfig['email']); ?></a>
         </div>
         <div>
-            <h3 class="text-lg font-semibold mb-3">Redes sociales</h3>
+            <h3 class="text-lg font-semibold mb-3"><?php echo e($Footer['social_title']); ?></h3>
             <ul class="space-y-2">
                 <?php foreach ($SocialLinks as $link): ?>
                     <li>
@@ -23,7 +23,7 @@ declare(strict_types=1);
             </ul>
         </div>
         <div>
-            <h3 class="text-lg font-semibold mb-3">Enlaces</h3>
+            <h3 class="text-lg font-semibold mb-3"><?php echo e($Footer['links_title']); ?></h3>
             <ul class="space-y-2">
                 <?php foreach ($Footer['legal_links'] as $link): ?>
                     <li>
@@ -36,6 +36,6 @@ declare(strict_types=1);
         </div>
     </div>
     <div class="mt-8 border-t border-gray-800 pt-4 text-center text-sm text-gray-400">
-        &copy; <?php echo date('Y'); ?> <?php echo e($SiteConfig['brand_name']); ?>. Todos los derechos reservados.
+        &copy; <?php echo date('Y'); ?> <?php echo e($SiteConfig['brand_name']); ?>. <?php echo e($Footer['copyright']); ?>
     </div>
 </footer>

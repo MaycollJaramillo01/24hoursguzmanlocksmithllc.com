@@ -24,6 +24,9 @@ $meta = seo_get_meta($currentPage);
     <meta property="og:url" content="<?php echo e($meta['canonical'] ?? $SiteConfig['base_url'] ?? ''); ?>">
     <meta property="og:type" content="website">
     <link rel="icon" href="<?php echo e($SiteConfig['favicon'] ?? 'assets/img/placeholder.svg'); ?>">
+    <style>
+        <?php echo $BrandCSSVars; ?>
+    </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {

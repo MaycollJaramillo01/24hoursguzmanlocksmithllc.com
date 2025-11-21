@@ -36,7 +36,7 @@ if ($hasErrors) {
 
 $payload = [
     'to'       => $SiteConfig['email'] ?? '',
-    'subject'  => ($SiteConfig['brand_name'] ?? 'Consulta') . ' - Nueva solicitud de contacto',
+    'subject'  => trim(($SiteConfig['brand_name'] ?? '') . ' - ' . ($Messages['contact_email_subject'] ?? '')),
     'name'     => $name,
     'email'    => $email,
     'phone'    => $phone,

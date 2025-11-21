@@ -6,17 +6,59 @@ if (!defined('APP_INIT')) {
     exit('Forbidden');
 }
 
+$full_name  = $_SERVER['PHP_SELF'];
+$name_array = explode('/', $full_name);
+$count      = count($name_array);
+$page_name  = $name_array[$count - 1];
+
+if ($page_name === 'index.php') {
+    $namepage = 'Home';
+} elseif ($page_name === 'about.php') {
+    $namepage = 'About';
+} elseif ($page_name === 'services.php') {
+    $namepage = 'Services';
+} elseif ($page_name === 'testimonials.php') {
+    $namepage = 'Testimonials';
+} elseif ($page_name === 'projects.php') {
+    $namepage = 'Projects';
+} elseif ($page_name === 'thank-you.php') {
+    $namepage = 'Thank You';
+} elseif ($page_name === '404.php') {
+    $namepage = 'Not Found';
+} elseif ($page_name === 'contact.php') {
+    $namepage = 'Contact Us';
+} else {
+    $namepage = ucfirst(str_replace('.php', '', $page_name));
+}
+
+$BrandColors = [
+    'primary'   => '#111827',
+    'secondary' => '#1f2937',
+    'accent'    => '#f59e0b',
+    'bg'        => '#ffffff',
+    'text'      => '#111827',
+];
+
+$BrandCSSVars = sprintf(
+    ':root { --brand-primary: %1$s; --brand-secondary: %2$s; --brand-accent: %3$s; --bg-body: %4$s; --text-main: %5$s; --radius-lg: 1.5rem; --section-space-y: 4rem; --max-width: 1120px; }',
+    $BrandColors['primary'],
+    $BrandColors['secondary'],
+    $BrandColors['accent'],
+    $BrandColors['bg'],
+    $BrandColors['text']
+);
+
 $SiteConfig = [
     'lang'       => 'es',
     'charset'    => 'UTF-8',
-    'base_url'   => 'https://ejemplo.com',
-    'brand_name' => 'Construction & Cleaning Experts',
+    'base_url'   => 'https://24hoursguzmanlocksmithllc.com',
+    'brand_name' => '24 Hours Guzman Locksmith LLC',
     'phone'      => '+1 555 000 0000',
     'phone_href' => 'tel:+15550000000',
-    'email'      => 'info@ejemplo.com',
-    'address'    => '123 Main Street, City, State',
+    'email'      => 'info@24hoursguzmanlocksmithllc.com',
+    'address'    => '123 Main Street, Your City, State',
     'logo_src'   => 'assets/img/placeholder.svg',
-    'logo_alt'   => 'Construction & Cleaning Experts logo',
+    'logo_alt'   => '24 Hours Guzman Locksmith LLC logo',
     'favicon'    => 'assets/img/placeholder.svg',
     'hero_image' => 'assets/img/placeholder.svg',
     'og_image'   => 'assets/img/placeholder.svg'
@@ -24,104 +66,116 @@ $SiteConfig = [
 
 $SeoMeta = [
     'home' => [
-        'title'       => 'Servicios de construcción, roofing y limpieza | Construction & Cleaning Experts',
-        'description' => 'Empresa especializada en construcción, roofing y limpieza profesional para hogares y negocios. Proyectos de alta calidad, seguros y puntuales.',
-        'keywords'    => 'construcción, roofing, limpieza, contractors, remodelación, mantenimiento',
-        'canonical'   => 'https://ejemplo.com/'
+        'title'       => $SiteConfig['brand_name'] . ' | ' . $namepage,
+        'description' => 'Cerrajería móvil 24/7 para aperturas, cambios de cerradura y duplicados de llaves residenciales, comerciales y automotrices.',
+        'keywords'    => 'cerrajero 24 horas, locksmith, apertura de puertas, cambio de cerradura, llaves de auto',
+        'canonical'   => $SiteConfig['base_url'] . '/'
     ]
 ];
 
 $Navigation = [
     ['label' => 'Inicio',      'href' => '#hero'],
     ['label' => 'Servicios',   'href' => '#services'],
+    ['label' => 'Proceso',     'href' => '#process'],
     ['label' => 'Proyectos',   'href' => '#projects'],
     ['label' => 'Testimonios', 'href' => '#testimonials'],
     ['label' => 'Contacto',    'href' => '#contact']
 ];
 
+$UI = [
+    'skip_link_label'     => 'Saltar al contenido principal',
+    'contact_card_title'  => 'Contacto directo',
+    'contact_phone_label' => 'Teléfono',
+    'contact_email_label' => 'Correo',
+    'contact_address'     => 'Dirección',
+    'social_title'        => 'Redes sociales',
+    'links_title'         => 'Enlaces',
+    'copyright_notice'    => 'Todos los derechos reservados.',
+];
+
 $Hero = [
-    'badge'               => 'Contratistas para tu hogar y negocio',
-    'title'               => 'Soluciones profesionales en construcción, roofing y limpieza',
-    'subtitle'            => 'Proyectos de alta calidad, equipos certificados y acompañamiento completo desde la planificación hasta la entrega final.',
-    'primary_cta_label'   => 'Solicitar cotización',
-    'primary_cta_href'    => '#contact',
-    'secondary_cta_label' => 'Ver servicios',
-    'secondary_cta_href'  => '#services'
+    'badge'               => 'Cerrajería móvil 24/7',
+    'title'               => 'Aperturas y cambios de cerradura rápidos y seguros',
+    'subtitle'            => 'Respondemos en minutos para solucionar urgencias residenciales, comerciales y automotrices con técnicos certificados.',
+    'primary_cta_label'   => 'Llamar ahora',
+    'primary_cta_href'    => $SiteConfig['phone_href'],
+    'secondary_cta_label' => 'Solicitar servicio',
+    'secondary_cta_href'  => '#contact'
 ];
 
 $Services = [
     'section_title'    => 'Servicios principales',
-    'section_subtitle' => 'Cobertura completa para proyectos residenciales y comerciales.',
+    'section_subtitle' => 'Cerrajería confiable para hogares, negocios y vehículos.',
     'items'            => [
         [
-            'title'       => 'Construcción y remodelación',
-            'description' => 'Diseño y ejecución de proyectos de construcción y remodelación, cumpliendo normas de seguridad y calidad.',
-            'icon_alt'    => 'Ícono de construcción'
+            'title'       => 'Apertura de puertas 24/7',
+            'description' => 'Atención de emergencias para puertas residenciales y comerciales sin dañar cerraduras ni marcos.',
+            'icon_alt'    => 'Ícono de apertura de puertas'
         ],
         [
-            'title'       => 'Roofing y reparación de techos',
-            'description' => 'Instalación, reparación y mantenimiento de techos para proteger tu inversión frente a filtraciones y clima extremo.',
-            'icon_alt'    => 'Ícono de roofing'
+            'title'       => 'Cambio y reparación de cerraduras',
+            'description' => 'Instalación, mantenimiento y rekey de cerraduras de alta seguridad para proteger tus espacios.',
+            'icon_alt'    => 'Ícono de cerraduras'
         ],
         [
-            'title'       => 'Limpieza residencial y comercial',
-            'description' => 'Equipos especializados en limpieza profunda para hogares, oficinas, locales y proyectos post-construcción.',
-            'icon_alt'    => 'Ícono de limpieza'
+            'title'       => 'Automotive locksmith',
+            'description' => 'Programación y duplicado de llaves, apertura de autos y reparación de cilindros de encendido.',
+            'icon_alt'    => 'Ícono de cerrajería automotriz'
         ]
     ]
 ];
 
 $About = [
     'section_title'    => 'Quiénes somos',
-    'section_subtitle' => 'Equipo especializado en construcción, roofing y limpieza.',
-    'body'             => 'Texto descriptivo sobre la empresa, experiencia, áreas de servicio y enfoque en seguridad, calidad y comunicación.'
+    'section_subtitle' => 'Cerrajeros locales de confianza, disponibles todo el día.',
+    'body'             => 'Atendemos urgencias y servicios programados con herramientas profesionales, protocolos seguros y precios transparentes.'
 ];
 
 $ProcessSteps = [
     'section_title'    => 'Cómo trabajamos',
-    'section_subtitle' => 'Un proceso claro y transparente para cada proyecto.',
+    'section_subtitle' => 'Un proceso claro y transparente para cada servicio.',
     'items'            => [
-        ['title' => '01. Evaluación y visita técnica', 'description' => 'Revisión en sitio para entender el alcance y las necesidades específicas de cada proyecto.'],
-        ['title' => '02. Propuesta y planificación',   'description' => 'Entrega de propuesta detallada con cronograma, costos y materiales recomendados.'],
-        ['title' => '03. Ejecución y supervisión',     'description' => 'Equipo especializado ejecuta con supervisión constante y controles de calidad.'],
-        ['title' => '04. Entrega y seguimiento',       'description' => 'Cierre formal del proyecto y acompañamiento para mantenimiento o ajustes futuros.']
+        ['title' => 'Diagnóstico inmediato', 'description' => 'Confirmamos el tipo de cerradura y la situación para definir la solución más rápida.'],
+        ['title' => 'Presupuesto transparente',   'description' => 'Compartimos el costo antes de empezar para que decidas con total confianza.'],
+        ['title' => 'Trabajo seguro y limpio',     'description' => 'Usamos técnicas sin daños y componentes certificados para prolongar la vida de tus cerraduras.'],
+        ['title' => 'Entrega y asesoría',       'description' => 'Probamos cada acceso contigo y dejamos recomendaciones de seguridad y mantenimiento.']
     ]
 ];
 
 $Gallery = [
     'section_id'       => 'projects',
     'section_title'    => 'Proyectos recientes',
-    'section_subtitle' => 'Ejemplos de trabajos en construcción, roofing y limpieza.',
+    'section_subtitle' => 'Casos resueltos de aperturas, cambios de cerradura y cerrajería automotriz.',
     'items'            => [
         [
             'image'    => 'assets/img/placeholder.svg',
-            'alt'      => 'Proyecto de remodelación de sala y cocina',
-            'label'    => 'Remodelación interior residencial',
-            'category' => 'Construcción'
+            'alt'      => 'Cambio de cerradura en puerta principal',
+            'label'    => 'Rekey residencial completo',
+            'category' => 'Hogar'
         ],
         [
             'image'    => 'assets/img/placeholder.svg',
-            'alt'      => 'Proyecto de reemplazo completo de techo',
-            'label'    => 'Instalación de nuevo roofing',
-            'category' => 'Roofing'
+            'alt'      => 'Instalación de cerradura inteligente',
+            'label'    => 'Upgrade a cerradura digital',
+            'category' => 'Comercial'
         ],
         [
             'image'    => 'assets/img/placeholder.svg',
-            'alt'      => 'Equipo de limpieza en oficina',
-            'label'    => 'Limpieza profunda de oficinas',
-            'category' => 'Limpieza'
+            'alt'      => 'Cerrajero programando llave de auto',
+            'label'    => 'Programación de llave con chip',
+            'category' => 'Automotriz'
         ],
         [
             'image'    => 'assets/img/placeholder.svg',
-            'alt'      => 'Equipo instalando paneles de techo',
-            'label'    => 'Refuerzo estructural de techos',
-            'category' => 'Roofing'
+            'alt'      => 'Reparación de cerradura comercial',
+            'label'    => 'Mantenimiento de barras antipánico',
+            'category' => 'Comercial'
         ]
     ]
 ];
 
 $ContactForm = [
-    'section_title'    => 'Solicita tu cotización',
+    'section_title'    => 'Solicita tu servicio',
     'section_subtitle' => 'Cuéntanos qué necesitas y coordinamos una visita o llamada.',
     'action'           => 'php/contact-handler.php',
     'method'           => 'post',
@@ -142,21 +196,25 @@ $ContactForm = [
             'label'       => 'Servicio de interés',
             'placeholder' => 'Selecciona un servicio',
             'options'     => [
-                'construction' => 'Construcción y remodelación',
-                'roofing'      => 'Roofing y reparación de techos',
-                'cleaning'     => 'Limpieza residencial y comercial',
-                'other'        => 'Otro servicio'
+                'emergency'  => 'Emergencia 24/7',
+                'residential' => 'Cerrajería residencial',
+                'commercial'  => 'Cerrajería comercial',
+                'automotive'  => 'Cerrajería automotriz',
+                'other'       => 'Otro servicio'
             ]
         ],
         'message' => [
-            'label'       => 'Descripción del proyecto',
-            'placeholder' => 'Describe brevemente tu proyecto o necesidad'
+            'label'       => 'Descripción del servicio',
+            'placeholder' => 'Describe brevemente tu solicitud o necesidad'
         ]
     ],
     'submit_label' => 'Enviar solicitud'
 ];
 
 $Footer = [
+    'social_title' => 'Redes sociales',
+    'links_title'  => 'Enlaces',
+    'copyright'    => 'Todos los derechos reservados.',
     'legal_links' => [
         ['label' => 'Aviso legal', 'href' => '#'],
         ['label' => 'Política de privacidad', 'href' => '#']
@@ -170,12 +228,12 @@ $SocialLinks = [
 ];
 
 $Messages = [
-    'cta_title'             => '¿Listo para iniciar tu proyecto?',
-    'cta_body'              => 'Agenda una visita técnica o recibe una propuesta personalizada para construcción, roofing o limpieza.',
-    'cta_primary_label'     => 'Agendar llamada',
-    'cta_primary_href'      => '#contact',
-    'cta_secondary_label'   => 'Ver proyectos',
-    'cta_secondary_href'    => '#projects',
+    'cta_title'             => '¿Listo para recuperar el acceso?',
+    'cta_body'              => 'Llámanos para aperturas, cambios de cerradura, duplicado de llaves y soluciones de seguridad confiables.',
+    'cta_primary_label'     => 'Hablar con un cerrajero',
+    'cta_primary_href'      => $SiteConfig['phone_href'],
+    'cta_secondary_label'   => 'Ver servicios',
+    'cta_secondary_href'    => '#services',
     'testimonials_title'    => 'Testimonios',
     'testimonials_subtitle' => 'Clientes que confiaron en nuestros servicios especializados.',
     'no_testimonials'       => 'Aún no hay testimonios disponibles. Vuelve pronto para conocer la experiencia de nuestros clientes.',
@@ -183,5 +241,6 @@ $Messages = [
     'contact_error_validation' => 'Por favor revisa los campos obligatorios y verifica la información ingresada.',
     'contact_error_generic' => 'Ocurrió un error al enviar tu mensaje. Intenta nuevamente más tarde.',
     'nav_open'              => 'Abrir navegación',
-    'nav_close'             => 'Cerrar navegación'
+    'nav_close'             => 'Cerrar navegación',
+    'contact_email_subject' => 'Nueva solicitud de contacto'
 ];
