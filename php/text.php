@@ -70,16 +70,30 @@ $SeoMeta = [
         'description' => 'Cerrajería móvil 24/7 para aperturas, cambios de cerradura y duplicados de llaves residenciales, comerciales y automotrices.',
         'keywords'    => 'cerrajero 24 horas, locksmith, apertura de puertas, cambio de cerradura, llaves de auto',
         'canonical'   => $SiteConfig['base_url'] . '/'
+    ],
+    'text' => [
+        'title'       => $SiteConfig['brand_name'] . ' | Guías y recursos',
+        'description' => 'Plantillas con textos prácticos, imágenes animadas y rutas visuales para reforzar la seguridad de tus accesos.',
+        'keywords'    => 'cerrajería, tips de seguridad, guías de cerraduras, animaciones de cerrajero',
+        'canonical'   => $SiteConfig['base_url'] . '/text.php'
+    ],
+    'innovacion' => [
+        'title'       => $SiteConfig['brand_name'] . ' | Innovación y rutas móviles',
+        'description' => 'Casos visuales con héroes animados, rutas de atención móvil y experiencias interactivas de cerrajería.',
+        'keywords'    => 'cerrajero innovador, hero animado, rutas móviles, cerraduras inteligentes',
+        'canonical'   => $SiteConfig['base_url'] . '/innovacion.php'
     ]
 ];
 
 $Navigation = [
-    ['label' => 'Inicio',      'href' => '#hero'],
-    ['label' => 'Servicios',   'href' => '#services'],
-    ['label' => 'Proceso',     'href' => '#process'],
-    ['label' => 'Proyectos',   'href' => '#projects'],
-    ['label' => 'Testimonios', 'href' => '#testimonials'],
-    ['label' => 'Contacto',    'href' => '#contact']
+    ['label' => 'Inicio',      'href' => '/index.php#hero'],
+    ['label' => 'Servicios',   'href' => '/index.php#services'],
+    ['label' => 'Proceso',     'href' => '/index.php#process'],
+    ['label' => 'Proyectos',   'href' => '/index.php#projects'],
+    ['label' => 'Guías',       'href' => '/text.php'],
+    ['label' => 'Innovación',  'href' => '/innovacion.php'],
+    ['label' => 'Testimonios', 'href' => '/index.php#testimonials'],
+    ['label' => 'Contacto',    'href' => '/index.php#contact']
 ];
 
 $UI = [
